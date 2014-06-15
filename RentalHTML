@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+
+
+
+
+<!-- 
+==================================================================================================
+WARNING: DO NOT DELETE OR CHANGE ANYTHING IN THIS FILE.
+ALL CHANGES SHOULD BE MADE TO THE FILE "Javascript for RentalCost.js"
+==================================================================================================
+-->
+
+
+
+
+
+
+<html>
+<head>
+<title>RentalCost</title>
+<style type="text/css">
+div.title {
+  font:bold .7em Tahoma, Helvetica, sans-serif;
+  padding:3px;
+  width:564px;
+  background-color:#0D2770;
+  color:#FFFFFF
+}
+div.dialog {
+  padding:18px;
+  border:solid 1px;
+  background-color:#D4D0C8;
+  width:532px;
+  height:310px;
+}
+textarea.outputArea {
+  font: .7em Tahoma, Helvetica, sans-serif;
+  float:left;
+  padding:2px;
+  border:solid 1px;
+  background-color:#FFFFC0;
+  width:400px;
+  height:286px;
+  wrap:logical;
+  overflow:auto;
+}
+input.button {
+  font: .7em Tahoma, Helvetica, sans-serif;
+  height:32px;
+}  
+</style>
+<script type="text/javascript">
+<!--
+
+var labelOut;
+
+function init()
+{
+  labelOut=document.getElementById("output");
+}
+
+function money(n)
+{
+  var nStr;
+  var x;
+  var x1;
+  var x2;
+  var rgx;
+  var pre;
+  var post;
+
+  if(n<0) {
+    pre = "($";
+    post = ")";
+    n=-n;
+  } else {
+    pre = "$";
+    post = "";
+  }
+  nStr = n.toFixed(2) + '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return pre + x1 + x2 + post;
+}
+
+//-->
+</script>
+<script type="text/javascript" src="Javascript for RentalCost.js"></script>
+
+<body onload="init();">
+<div class="title">
+RentalCost
+</div>
+<div class="dialog">
+<textarea id="output" class="outputArea" wrap="logical"></textarea>
+<input class="button" type="button" value="Run Lab" style="margin:20px" onclick="driverModule_Click();" />
+</div>
+</body>
